@@ -1,0 +1,64 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Global styles */
+body {
+  font-family: "Space Grotesk", sans-serif;
+  min-height: 100dvh;
+}
+
+/* Project styles */
+:root {
+  --primary-gradient: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+
+  --error: hsl(0, 100%, 66%);
+
+  --white: hsl(0, 0%, 100%);
+  --light-gray: hsl(270, 3%, 87%);
+  --gray: hsl(279, 6%, 55%);
+  --violet: hsl(278, 68%, 11%);
+}
