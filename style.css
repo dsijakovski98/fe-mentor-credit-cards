@@ -21,7 +21,7 @@ video,
 canvas,
 svg {
   display: block;
-  max-width: 100%;
+  width: 100%;
 }
 
 input,
@@ -49,6 +49,8 @@ button {
 body {
   font-family: "Space Grotesk", sans-serif;
   min-height: 100dvh;
+
+  overflow: hidden;
 }
 
 /* Project styles */
@@ -61,4 +63,83 @@ body {
   --light-gray: hsl(270, 3%, 87%);
   --gray: hsl(279, 6%, 55%);
   --violet: hsl(278, 68%, 11%);
+}
+
+main {
+  display: flex;
+  height: 100%;
+}
+
+/* Cards */
+.cards {
+  flex: 1;
+
+  position: relative;
+}
+
+.card {
+  position: absolute;
+}
+
+.card .content {
+  position: absolute;
+  inset: 1.5rem;
+}
+
+.card p {
+  position: absolute;
+  top: 0;
+
+  color: var(--white);
+  letter-spacing: 2px;
+
+  z-index: 1;
+}
+
+/* Front Card */
+.front {
+  top: 15%;
+  right: 0;
+  transform: translateX(25%);
+}
+
+.front .number {
+  top: 60%;
+  inset-inline: 0;
+
+  text-align: center;
+  font-size: 2rem;
+}
+
+.front .owner {
+  top: 100%;
+  transform: translateY(-100%);
+
+  text-transform: uppercase;
+}
+
+.front .expiry-date {
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%);
+}
+
+/* Back card */
+.back {
+  bottom: 25%;
+  right: 0;
+  transform: translateX(50%);
+}
+
+.back .cvv {
+  top: 44%;
+  left: 82%;
+}
+
+/* Submit form */
+section {
+  flex: 2;
+}
+
+@media screen and (max-width: 900px) {
 }
