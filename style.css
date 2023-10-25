@@ -83,7 +83,7 @@ main {
 
 .card .content {
   position: absolute;
-  inset: 1.5rem;
+  inset: 1.5cqw;
 }
 
 .card p {
@@ -92,6 +92,7 @@ main {
 
   color: var(--white);
   letter-spacing: 2px;
+  font-size: 1.3cqw;
 
   z-index: 1;
 }
@@ -108,7 +109,7 @@ main {
   inset-inline: 0;
 
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2cqw;
 }
 
 .front .owner {
@@ -141,5 +142,56 @@ section {
   flex: 2;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 650px) {
+  .front .number {
+    font-size: 2cqw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .front .number {
+    font-size: 1.8cqw;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  main {
+    display: block;
+  }
+
+  .card {
+    width: 75%;
+  }
+
+  .card .content {
+    inset: 4cqw;
+    bottom: 6cqw;
+  }
+
+  .card p {
+    font-size: 3cqw;
+  }
+
+  .front {
+    transform: translateX(0);
+    top: 55%;
+    left: 5%;
+    right: unset;
+
+    z-index: 1;
+  }
+
+  .front .number {
+    top: 55%;
+    font-size: 5cqw;
+  }
+
+  .back {
+    transform: translateX(0);
+    right: 5%;
+  }
+
+  .back .cvv {
+    top: 46%;
+  }
 }
