@@ -83,16 +83,16 @@ main {
 
 .card .content {
   position: absolute;
-  inset: 1.5cqw;
+  inset: 2cqw;
 }
 
 .card p {
   position: absolute;
   top: 0;
 
-  color: var(--white);
+  color: var(--light-gray);
   letter-spacing: 2px;
-  font-size: 1.3cqw;
+  font-size: 1.2cqw;
 
   z-index: 1;
 }
@@ -104,8 +104,12 @@ main {
   transform: translateX(25%);
 }
 
+.front .logo {
+  width: 8cqw;
+}
+
 .front .number {
-  top: 60%;
+  top: 55%;
   inset-inline: 0;
 
   text-align: center;
@@ -133,7 +137,7 @@ main {
 }
 
 .back .cvv {
-  top: 44%;
+  top: 42.5%;
   left: 82%;
 }
 
@@ -142,15 +146,15 @@ section {
   flex: 2;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 780px) {
   .front .number {
     font-size: 2cqw;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 530px) {
   .front .number {
-    font-size: 1.8cqw;
+    font-size: 1.7cqw;
   }
 }
 
@@ -179,6 +183,10 @@ section {
     right: unset;
 
     z-index: 1;
+  }
+
+  .front .logo {
+    width: 15cqw;
   }
 
   .front .number {
