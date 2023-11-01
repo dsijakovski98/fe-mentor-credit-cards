@@ -60,9 +60,17 @@ body {
   --error: hsl(0, 100%, 66%);
 
   --white: hsl(0, 0%, 100%);
-  --light-gray: hsl(270, 3%, 87%);
+  --light-gray: hsl(285, 4%, 81%);
   --gray: hsl(279, 6%, 55%);
   --violet: hsl(278, 68%, 11%);
+
+  --border-radius: 6px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 main {
@@ -154,14 +162,36 @@ main {
     "date cvc"
     "btn btn";
   gap: 2rem;
+
+  margin-left: 4em;
+
+  max-width: 400px;
 }
 
 .form-group {
   display: grid;
+  gap: 0.5rem;
 }
 
 .form-group label {
   text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  color: var(--violet);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+}
+
+.form-group input::placeholder {
+  color: var(--light-gray);
 }
 
 .owner-input {
@@ -174,6 +204,23 @@ main {
 
 .date-input {
   grid-area: date;
+
+  display: grid;
+  grid-template-areas:
+    "label label"
+    "month year";
+}
+
+.date-input label {
+  grid-area: label;
+}
+
+.date-input input:first-child {
+  grid-area: month;
+}
+
+.date-input input:second-child {
+  grid-area: year;
 }
 
 .cvc-input {
@@ -182,9 +229,23 @@ main {
 
 form button {
   grid-area: btn;
+
+  border: 0;
+  border-radius: var(--border-radius);
+
+  color: var(--white);
+  background-color: var(--violet);
+
+  font-size: 0.9rem;
+
+  padding-block: 0.8rem;
 }
 
 @media screen and (max-width: 800px) {
+  body {
+    overflow: initial;
+  }
+
   main {
     width: 100dvw;
     display: block;
@@ -233,5 +294,35 @@ form button {
 
   .back .cvc {
     top: 46%;
+  }
+
+  .submit-form {
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+  }
+
+  .submit-form form {
+    margin-left: 0;
+  }
+
+  form button {
+    margin-top: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .submit-form {
+    padding-top: 6rem;
+    padding-inline: 1rem;
+  }
+
+  .submit-form form {
+    grid-template-areas:
+      "owner"
+      "number"
+      "date"
+      "cvc"
+      "btn";
+    gap: 1rem;
   }
 }
