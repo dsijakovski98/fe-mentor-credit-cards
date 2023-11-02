@@ -2,17 +2,17 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  line-height: 1.3;
-  -webkit-font-smoothing: antialiased;
+	line-height: 1.3;
+	-webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -20,15 +20,15 @@ picture,
 video,
 canvas,
 svg {
-  display: block;
-  width: 100%;
+	display: block;
+	width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-  font: inherit;
+	font: inherit;
 }
 
 p,
@@ -38,314 +38,335 @@ h3,
 h4,
 h5,
 h6 {
-  overflow-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /* Global styles */
 body {
-  font-family: "Space Grotesk", sans-serif;
-  min-height: 100dvh;
+	font-family: "Space Grotesk", sans-serif;
+	min-height: 100dvh;
 
-  overflow: hidden;
+	overflow: hidden;
 }
 
 /* Project styles */
 :root {
-  --primary-gradient: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+	--primary-gradient: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
 
-  --error: hsl(0, 100%, 66%);
+	--error: hsl(0, 100%, 66%);
 
-  --white: hsl(0, 0%, 100%);
-  --light-gray: hsl(285, 4%, 81%);
-  --gray: hsl(279, 6%, 55%);
-  --violet: hsl(278, 68%, 11%);
+	--white: hsl(0, 0%, 100%);
+	--light-gray: hsl(285, 4%, 81%);
+	--gray: hsl(279, 6%, 55%);
+	--violet: hsl(278, 68%, 11%);
 
-  --border-radius: 6px;
+	--border-radius: 6px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 main {
-  display: flex;
-  height: 100dvh;
+	display: flex;
+	height: 100dvh;
 }
 
 /* Cards */
 .cards {
-  position: relative;
+	position: relative;
 }
 
 .card {
-  position: absolute;
+	position: absolute;
 }
 
 .card .content {
-  position: absolute;
-  inset: 1.5rem;
+	position: absolute;
+	inset: 1.5rem;
 }
 
 .card p {
-  position: absolute;
-  top: 0;
+	position: absolute;
+	top: 0;
 
-  color: var(--white);
-  letter-spacing: 2px;
+	color: var(--white);
+	letter-spacing: 2px;
 
-  font-size: 1rem;
+	font-size: 1rem;
 
-  z-index: 1;
+	z-index: 1;
 }
 
 /* Front Card */
 .front {
-  top: 15%;
-  right: 0;
-  transform: translateX(25%);
+	top: 15%;
+	right: 0;
+	transform: translateX(25%);
 }
 
 .front .logo {
-  width: 5rem;
+	width: 5rem;
 }
 
 .front .number {
-  top: 55%;
-  inset-inline: 0;
+	top: 55%;
+	inset-inline: 0;
 
-  text-align: center;
-  letter-spacing: 0.125rem;
-  font-size: 2rem;
+	text-align: center;
+	letter-spacing: 0.125rem;
+	font-size: 2rem;
 }
 
 .front .owner {
-  top: 100%;
-  transform: translateY(-100%);
+	top: 100%;
+	transform: translateY(-100%);
 
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 .front .expiry-date {
-  top: 100%;
-  left: 100%;
-  transform: translate(-100%, -100%);
+	top: 100%;
+	left: 100%;
+	transform: translate(-100%, -100%);
 }
 
 /* Back card */
 .back {
-  top: 55%;
-  right: 0;
-  transform: translateX(50%);
+	top: 55%;
+	right: 0;
+	transform: translateX(50%);
 }
 
 .back .cvc {
-  top: 42.5%;
-  left: 82%;
+	top: 42.5%;
+	left: 82%;
 }
 
 /* Submit form */
 .submit-form {
-  flex: 1;
-  display: grid;
-  place-items: center;
+	flex: 1;
+	display: grid;
+	place-items: center;
 }
 
 .submit-form form {
-  display: grid;
-  grid-template-areas:
-    "owner owner"
-    "number number"
-    "date cvc"
-    "btn btn";
-  gap: 2rem;
+	display: grid;
+	grid-template-areas:
+		"owner owner"
+		"number number"
+		"date cvc"
+		"btn btn";
+	gap: 2rem;
 
-  margin-left: 4em;
+	margin-left: 4em;
 
-  max-width: 400px;
+	max-width: 400px;
 }
 
 .form-group {
-  display: grid;
-  gap: 0.5rem;
+	display: grid;
+	gap: 0.5rem;
 }
 
 .form-group label {
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
 
-  font-size: 0.8rem;
-  font-weight: 600;
+	font-size: 0.8rem;
+	font-weight: 600;
 
-  color: var(--violet);
+	color: var(--violet);
 }
 
 .form-group input {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--light-gray);
-  border-radius: var(--border-radius);
+	width: 100%;
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--light-gray);
+	border-radius: var(--border-radius);
 }
 
 .form-group input::placeholder {
-  color: var(--light-gray);
+	color: var(--light-gray);
+}
+
+.form-group input[aria-invalid="true"] {
+	border-color: var(--error);
+}
+
+.error {
+	display: none;
+
+	transform: translateY(-2.5px);
+
+	color: var(--error);
+	font-size: small;
+}
+
+.form-group input[aria-invalid="true"] ~ .error {
+	display: block;
+}
+
+.form-group #number {
+	text-transform: uppercase;
 }
 
 .owner-input {
-  grid-area: owner;
+	grid-area: owner;
 }
 
 .number-input {
-  grid-area: number;
+	grid-area: number;
 }
 
 .date-input {
-  grid-area: date;
+	grid-area: date;
 
-  display: grid;
-  grid-template-areas:
-    "label label"
-    "month year";
+	display: grid;
+	grid-template-areas:
+		"label label"
+		"month year";
 }
 
 .date-input label {
-  grid-area: label;
+	grid-area: label;
 }
 
 .date-input input:first-child {
-  grid-area: month;
+	grid-area: month;
 }
 
 .date-input input:second-child {
-  grid-area: year;
+	grid-area: year;
 }
 
 .cvc-input {
-  grid-area: cvc;
+	grid-area: cvc;
 }
 
 form button {
-  grid-area: btn;
+	grid-area: btn;
 
-  border: 0;
-  border-radius: var(--border-radius);
+	border: 0;
+	border-radius: var(--border-radius);
 
-  color: var(--white);
-  background-color: var(--violet);
+	color: var(--white);
+	background-color: var(--violet);
 
-  font-size: 0.9rem;
+	font-size: 0.9rem;
 
-  padding-block: 0.8rem;
+	padding-block: 0.8rem;
 }
 
 @media screen and (max-width: 800px) {
-  body {
-    overflow: initial;
-  }
+	body {
+		overflow: initial;
+	}
 
-  main {
-    width: 100dvw;
-    display: block;
-  }
+	main {
+		width: 100dvw;
+		display: block;
+	}
 
-  .card {
-    width: 75%;
-  }
+	.card {
+		width: 75%;
+	}
 
-  .card .content {
-    inset: 2rem;
-  }
+	.card .content {
+		inset: 2rem;
+	}
 
-  .card p {
-    font-size: 0.85rem;
-  }
+	.card p {
+		font-size: 0.85rem;
+	}
 
-  .front {
-    transform: translateX(0);
-    top: 55%;
-    left: 5%;
-    right: unset;
+	.front {
+		transform: translateX(0);
+		top: 55%;
+		left: 5%;
+		right: unset;
 
-    z-index: 1;
-  }
+		z-index: 1;
+	}
 
-  .front .logo {
-    width: 6rem;
-  }
+	.front .logo {
+		width: 6rem;
+	}
 
-  .front .number {
-    top: 55%;
-    font-size: 5cqw;
-  }
+	.front .number {
+		top: 55%;
+		font-size: 5cqw;
+	}
 
-  .back {
-    top: 15%;
-    transform: translateX(0);
-    right: 5%;
-  }
+	.back {
+		top: 15%;
+		transform: translateX(0);
+		right: 5%;
+	}
 
-  .back p {
-    transform: translateY(-5px);
-    font-size: 1.2rem;
-  }
+	.back p {
+		transform: translateY(-5px);
+		font-size: 1.2rem;
+	}
 
-  .back .cvc {
-    top: 46%;
-  }
+	.back .cvc {
+		top: 46%;
+	}
 
-  .submit-form {
-    padding-top: 8rem;
-    padding-bottom: 2rem;
-  }
+	.submit-form {
+		padding-top: 8rem;
+		padding-bottom: 2rem;
+	}
 
-  .submit-form form {
-    margin-left: 0;
-  }
+	.submit-form form {
+		margin-left: 0;
+	}
 
-  form button {
-    margin-top: 0.5rem;
-  }
+	form button {
+		margin-top: 0.5rem;
+	}
 }
 
 @media screen and (max-width: 560px) {
-  .front .content {
-    inset: 1.2rem;
-  }
+	.front .content {
+		inset: 1.2rem;
+	}
 
-  .card p {
-    font-size: 0.75rem;
-  }
+	.card p {
+		font-size: 0.75rem;
+	}
 
-  .front .logo {
-    width: 4rem;
-  }
+	.front .logo {
+		width: 4rem;
+	}
 
-  .front .number {
-    font-size: 4.7cqw;
-  }
+	.front .number {
+		font-size: 4.7cqw;
+	}
 
-  .back p {
-    /* transform: translateY(-7px); */
-    font-size: 0.8rem;
-  }
+	.back p {
+		/* transform: translateY(-7px); */
+		font-size: 0.8rem;
+	}
 
-  .submit-form {
-    padding-top: 6rem;
-    padding-inline: 1rem;
-  }
+	.submit-form {
+		padding-top: 6rem;
+		padding-inline: 1rem;
+	}
 
-  .submit-form form {
-    grid-template-areas:
-      "owner"
-      "number"
-      "date"
-      "cvc"
-      "btn";
-    gap: 1rem;
-  }
+	.submit-form form {
+		grid-template-areas:
+			"owner"
+			"number"
+			"date"
+			"cvc"
+			"btn";
+		gap: 1rem;
+	}
 }
