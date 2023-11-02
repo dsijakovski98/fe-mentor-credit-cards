@@ -73,6 +73,20 @@ input[type="number"]::-webkit-outer-spin-button {
 	margin: 0;
 }
 
+button {
+	border: 0;
+	border-radius: var(--border-radius);
+
+	color: var(--white);
+	background-color: var(--violet);
+
+	font-size: 0.9rem;
+
+	padding-block: 0.8rem;
+
+	width: 100%;
+}
+
 main {
 	display: flex;
 	height: 100dvh;
@@ -156,18 +170,21 @@ main {
 	place-items: center;
 }
 
-.submit-form form {
+.submit-form form,
+.thank-you {
 	display: grid;
+
+	max-width: 400px;
+	margin-left: 4em;
+}
+
+.submit-form form {
+	gap: 2rem;
 	grid-template-areas:
 		"owner owner"
 		"number number"
 		"date cvc"
 		"btn btn";
-	gap: 2rem;
-
-	margin-left: 4em;
-
-	max-width: 400px;
 }
 
 .form-group {
@@ -234,6 +251,17 @@ main {
 		"month year";
 }
 
+.date-input:has(input[aria-invalid="true"]) {
+	grid-template-areas:
+		"label label"
+		"month year"
+		"error error";
+}
+
+.date-input .error {
+	grid-area: error;
+}
+
 .date-input label {
 	grid-area: label;
 }
@@ -252,16 +280,40 @@ main {
 
 form button {
 	grid-area: btn;
+}
 
-	border: 0;
-	border-radius: var(--border-radius);
+/* Thank You section */
+.thank-you {
+	display: none;
 
-	color: var(--white);
-	background-color: var(--violet);
+	width: 800px;
 
-	font-size: 0.9rem;
+	place-items: center;
+	gap: 2.5rem;
 
-	padding-block: 0.8rem;
+	text-align: center;
+}
+
+.thank-you img {
+	width: 70px;
+}
+
+.thank-you .msg {
+	display: grid;
+	gap: 1rem;
+}
+
+.thank-you h2 {
+	text-transform: uppercase;
+
+	font-size: 2rem;
+	font-weight: 400;
+
+	color: var(--violet);
+}
+
+.thank-you p {
+	color: var(--gray);
 }
 
 @media screen and (max-width: 800px) {
@@ -324,7 +376,8 @@ form button {
 		padding-bottom: 2rem;
 	}
 
-	.submit-form form {
+	.submit-form form,
+	.thank-you {
 		margin-left: 0;
 	}
 

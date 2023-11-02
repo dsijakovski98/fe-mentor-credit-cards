@@ -1,4 +1,5 @@
 const form = document.querySelector("form");
+const thankYou = document.querySelector(".thank-you");
 
 const owner = form.querySelector(".owner-input");
 const number = form.querySelector(".number-input");
@@ -6,18 +7,31 @@ const date = form.querySelector(".date-input");
 const cvc = form.querySelector(".cvc-input");
 
 const ERR_BLANK = "Can't be blank";
+let errorDetected = false;
 
 const validation = {
 	test: {
 		lettersOnly: /^[a-zA-Z\s]+$/,
 		numbersOnly: /^[0-9]+$/,
 	},
-	numberMaxLength: 16,
-	dateMaxLength: 2,
-	cvcMaxLength: 3,
+	numberLength: 16,
+	dateLength: 2,
+	cvcLength: 3,
+
+	month: {
+		min: 1,
+		max: 12,
+	},
+
+	year: {
+		min: 0,
+		max: 99,
+	},
 };
 
 const clearErrors = () => {
+	errorDetected = false;
+
 	form.querySelectorAll("input").forEach((input) => {
 		input.removeAttribute("aria-invalid");
 	});
@@ -28,6 +42,8 @@ const clearErrors = () => {
 };
 
 const addError = (formInput, msg, index = 0) => {
+	errorDetected = true;
+
 	const targetInput = formInput.querySelectorAll("input")[index];
 	targetInput.setAttribute("aria-invalid", "true");
 
@@ -57,34 +73,76 @@ form.addEventListener("submit", (e) => {
 	const [monthInput, yearInput] = date.querySelectorAll("input");
 	const cvcInput = cvc.querySelector("input");
 
-	// Check empty fields
+	// Owner input
 	if (ownerInput.value.trim() === "") {
 		addError(owner, ERR_BLANK);
-	}
-
-	if (numberInput.value.trim() === "") {
-		addError(number, ERR_BLANK);
-	}
-
-	if (monthInput.value.trim() === "") {
-		addError(date, ERR_BLANK, 0);
-	}
-
-	if (yearInput.value.trim() == "") {
-		addError(date, ERR_BLANK, 1);
-	}
-
-	if (cvcInput.value.trim() === "") {
-		addError(cvc, ERR_BLANK);
 	}
 
 	if (!validation.test.lettersOnly.test(ownerInput.value)) {
 		addError(owner, "Wrong format, letters only");
 	}
 
-	if (!validation.test.numbersOnly.test(numberInput.value.replaceAll(" ", ""))) {
+	// Number input
+	const rawNumberInput = numberInput.value.replaceAll(" ", "");
+	if (numberInput.value.trim() === "") {
+		addError(number, ERR_BLANK);
+	}
+
+	if (!validation.test.numbersOnly.test(rawNumberInput)) {
 		addError(number, "Wrong format, numbers only");
 	}
+
+	if (rawNumberInput.length < validation.numberLength) {
+		addError(number, `Credit card number must be ${validation.numberLength} digits exactly`);
+	}
+
+	// Date input
+	const { month, year } = validation;
+	let dateError = "";
+	let errorIndexes = [];
+
+	errorIndexes.push(0);
+	if (monthInput.value.trim() === "") {
+		dateError += `Month ${ERR_BLANK.toLowerCase()}! `;
+	} else if (monthInput.valueAsNumber < month.min || monthInput.valueAsNumber > month.max) {
+		dateError += `Month must be a value from ${month.min} to ${month.max}! `;
+	} else if (monthInput.value.length < validation.dateLength) {
+		dateError += `Month must be ${validation.dateLength} digits exactly! `;
+	} else {
+		errorIndexes.pop();
+	}
+
+	errorIndexes.push(1);
+	if (yearInput.value.trim() == "") {
+		dateError += `Year ${ERR_BLANK.toLowerCase()}! `;
+	} else if (yearInput.valueAsNumber < year.min || yearInput.valueAsNumber > year.max) {
+		dateError += `Year must be a value from ${year.min} to ${year.max}! `;
+	} else if (yearInput.value.length < validation.dateLength) {
+		dateError += `Year must be ${validation.dateLength} digits exactly! `;
+	} else {
+		errorIndexes.pop();
+	}
+
+	if (dateError.length > 0) {
+		errorIndexes.forEach((index) => {
+			addError(date, dateError.trim(), index);
+		});
+	}
+
+	// CVC Input
+	if (cvcInput.value.trim() === "") {
+		addError(cvc, ERR_BLANK);
+	}
+
+	if (cvcInput.value.length < validation.cvcLength) {
+		addError(cvc, `CVC must be ${validation.cvcLength} digits exactly!`);
+	}
+
+	if (errorDetected) return;
+
+	form.reset();
+	form.style.display = "none";
+	thankYou.style.display = "grid";
 });
 
 // Credit card number pattern while typing
@@ -92,11 +150,11 @@ let prevNumberValue = "";
 number.querySelector("input").addEventListener("input", (e) => {
 	let trimmedValue = e.target.value.replaceAll(" ", "").trim();
 
-	if (trimmedValue.length === validation.numberMaxLength) {
+	if (trimmedValue.length === validation.numberLength) {
 		return;
 	}
 
-	if (trimmedValue.length > validation.numberMaxLength) {
+	if (trimmedValue.length > validation.numberLength) {
 		e.target.value = e.target.value.slice(0, -1);
 		return;
 	}
@@ -113,10 +171,15 @@ number.querySelector("input").addEventListener("input", (e) => {
 
 date.querySelectorAll("input").forEach((input) => {
 	input.addEventListener("input", (e) => {
-		checkMaxLength(e.target, validation.dateMaxLength);
+		checkMaxLength(e.target, validation.dateLength);
 	});
 });
 
 cvc.querySelector("input").addEventListener("input", (e) => {
-	checkMaxLength(e.target, validation.cvcMaxLength);
+	checkMaxLength(e.target, validation.cvcLength);
+});
+
+thankYou.querySelector("button").addEventListener("click", () => {
+	form.style.display = "grid";
+	thankYou.style.display = "none";
 });
