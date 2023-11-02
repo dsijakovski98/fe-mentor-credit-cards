@@ -89,16 +89,17 @@ main {
 
 .card .content {
   position: absolute;
-  inset: 2cqw;
+  inset: 1.5rem;
 }
 
 .card p {
   position: absolute;
   top: 0;
 
-  color: var(--light-gray);
+  color: var(--white);
   letter-spacing: 2px;
-  font-size: 1.2cqw;
+
+  font-size: 1rem;
 
   z-index: 1;
 }
@@ -111,7 +112,7 @@ main {
 }
 
 .front .logo {
-  width: 8cqw;
+  width: 5rem;
 }
 
 .front .number {
@@ -119,7 +120,8 @@ main {
   inset-inline: 0;
 
   text-align: center;
-  font-size: 2.2cqw;
+  letter-spacing: 0.125rem;
+  font-size: 2rem;
 }
 
 .front .owner {
@@ -251,21 +253,16 @@ form button {
     display: block;
   }
 
-  .front .number {
-    font-size: 2cqw;
-  }
-
   .card {
     width: 75%;
   }
 
   .card .content {
-    inset: 4cqw;
-    bottom: 6cqw;
+    inset: 2rem;
   }
 
   .card p {
-    font-size: 3cqw;
+    font-size: 0.85rem;
   }
 
   .front {
@@ -278,7 +275,7 @@ form button {
   }
 
   .front .logo {
-    width: 15cqw;
+    width: 6rem;
   }
 
   .front .number {
@@ -290,6 +287,11 @@ form button {
     top: 15%;
     transform: translateX(0);
     right: 5%;
+  }
+
+  .back p {
+    transform: translateY(-5px);
+    font-size: 1.2rem;
   }
 
   .back .cvc {
@@ -310,7 +312,28 @@ form button {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 560px) {
+  .front .content {
+    inset: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.75rem;
+  }
+
+  .front .logo {
+    width: 4rem;
+  }
+
+  .front .number {
+    font-size: 4.7cqw;
+  }
+
+  .back p {
+    /* transform: translateY(-7px); */
+    font-size: 0.8rem;
+  }
+
   .submit-form {
     padding-top: 6rem;
     padding-inline: 1rem;
